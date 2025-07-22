@@ -1,5 +1,5 @@
 # minimum cmake version
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.30)
 
 # name of the project, and language
 project(CustomDataStructures)

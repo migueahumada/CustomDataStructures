@@ -21,54 +21,54 @@ class Item {
 public:
   Item() = default;
   
-  Item( Type::E itemType = Type::DEFAULT, 
+  Item( std::string name = "Default Name",
+        Type::E itemType = Type::DEFAULT,
         int damage = 50, 
-        bool isEnchanted = false) {}
+        bool isEnchanted = false)
+        : m_name(name) ,
+          m_itemType(itemType),
+          m_damage(damage),
+          m_isEnchanted(isEnchanted){}
   
   ~Item() = default;
 
-  Type::E 
-  m_itemType {Type::DEFAULT};
+  std::string m_name {"Default_Name"};
   
-  int 
-  m_damage{50};
+  Type::E m_itemType {Type::DEFAULT};
   
-  bool 
-  m_isEnchanted {false};
+  int m_damage{50};
+  
+  bool m_isEnchanted {false};
 
 };
 
 
 int main(){
-  
-  std::vector<int> vec(2);
-
-  int asdf = vec.size();
 
   std::mt19937 mt;
-  mt.seed(std::time(NULL));
+  mt.seed((unsigned)std::time(NULL));
   std::uniform_int_distribution<int> dist(0, 100);
 
-  MKVector<int> numbers;
+  MKVector<Item> vItems;
   
-  for (int i = 0; i < 30; ++i)
+  
+  
+  for (int i = 0; i < 8; ++i)
   {
-    numbers.PushBack(dist(mt));
+    vItems.PushBack({"IITEEEM!"});
   }
+  
+  vItems.PushBack({"Drorthy"});
 
-  std::cout << "The size of the vector is: " << numbers.Size() << std::endl;
-
-  std::cout << "Elements on the vector with the [] operator: " << std::endl;
-  for (int i = 0; i < numbers.Size(); ++i)
+  std::cout << vItems.Size() <<" elements on the vector: " << std::endl;
+  for (int i = 0; i < vItems.Size(); ++i)
   {
-    std::cout << "\t- Element " <<i<<": " << numbers[i] << std::endl;
+    std::cout << "\t- Element " <<i<<": " << vItems[i].m_name << std::endl;
   }
-
-  std::cout << "Elements on the vector with the At function: " << std::endl;
-  for (int i = 0; i < numbers.Size(); ++i)
-  {
-    std::cout << "\t- Element " << i << ": " << numbers.At(i) << std::endl;
-  }
-
+  
+  
+  
+  int fasd = 0;
+  
   return 0;
 }
